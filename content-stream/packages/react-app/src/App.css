@@ -7,6 +7,29 @@
   max-width: 1000px;
   margin-top: 20px;
 }
+.sell-area {
+  padding: 20px;
+  /* border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray; */
+  min-height: 60vh;
+}
+
+.dropzone {
+  border: 1px dotted lightgray;
+  padding-top: 20px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.ant-input {
+  max-width: 400px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ant-input-group-wrapper {
+  margin: 10px;
+}
 
 .ant-layout-header {
   background: white !important;

@@ -39,3 +39,13 @@ export const insertFile = (buckets, bucketKey, file, path) => {
     reader.readAsArrayBuffer(file);
   });
 };
+
+export const createBucketWithFiles = async (bucketName, files) => {
+  const {buckets, bucketKey } = await getOrCreateBucket(bucketName)
+  for (let i in files) {
+    const fileName = files[i].name
+    await insertFile(buckets, bucketKey, files[i], fileName)
+    }
+
+  return {buckets, bucketKey}
+}

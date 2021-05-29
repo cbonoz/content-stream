@@ -310,7 +310,7 @@ function App(props) {
               to="/"
             ></Link>
           </Menu.Item>
-          {ROUTES.map(r => {
+          {/* {ROUTES.map(r => {
             const link = `/${r}`;
             return (
               <Menu.Item key={link}>
@@ -324,8 +324,8 @@ function App(props) {
                 </Link>
               </Menu.Item>
             );
-          })}
-          {/* <Menu.Item key="/hints">
+          })} */}
+          <Menu.Item key="/hints">
             <Link
               onClick={() => {
                 setRoute("/hints");
@@ -354,7 +354,7 @@ function App(props) {
             >
               Mainnet DAI
             </Link>
-          </Menu.Item> */}
+          </Menu.Item>
           <Menu.Item key="/subgraph">
             <Link
               onClick={() => {
@@ -382,10 +382,20 @@ function App(props) {
             <Discover />
           </Route>
           <Route path="/sell">
-            <SellStream />
+            <SellStream
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
           </Route>
           <Route path="/stream">
-            <CreateStream />
+            <CreateStream
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
           </Route>
           <Route path="/hints">
             <Hints
