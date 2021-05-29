@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, Avatar } from "antd";
-import { DollarOutlined, EditOutlined, EllipsisOutlined, InfoOutlined, SettingOutlined } from "@ant-design/icons";
+import { DollarOutlined, EllipsisOutlined, InfoCircleOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 
@@ -17,7 +17,7 @@ function StreamCard({ key, data }) {
       cover={<img alt="example" src={defaultImage} />}
       actions={[
         <DollarOutlined key="purchase" onClick={onClick} />,
-        <InfoOutlined key="info" onClick={viewInfo} />,
+        <InfoCircleOutlined key="info" onClick={viewInfo} />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
     >

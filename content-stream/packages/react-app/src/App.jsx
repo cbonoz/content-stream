@@ -293,7 +293,7 @@ function App(props) {
     );
   }
 
-  const ROUTES = ["discover", "sell", "stream"];
+  const ROUTES = ["discover", "sell", "stream", "subgraph"];
 
   return (
     <div className="App">
@@ -302,15 +302,7 @@ function App(props) {
       {networkDisplay}
       <BrowserRouter>
         <Menu style={{ textAlign: "center" }} selectedKeys={[route]} mode="horizontal">
-          <Menu.Item key="/">
-            <Link
-              onClick={() => {
-                setRoute("/");
-              }}
-              to="/"
-            ></Link>
-          </Menu.Item>
-          {/* {ROUTES.map(r => {
+          {ROUTES.map(r => {
             const link = `/${r}`;
             return (
               <Menu.Item key={link}>
@@ -324,47 +316,7 @@ function App(props) {
                 </Link>
               </Menu.Item>
             );
-          })} */}
-          <Menu.Item key="/hints">
-            <Link
-              onClick={() => {
-                setRoute("/hints");
-              }}
-              to="/hints"
-            >
-              Hints
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/exampleui">
-            <Link
-              onClick={() => {
-                setRoute("/exampleui");
-              }}
-              to="/exampleui"
-            >
-              ExampleUI
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/mainnetdai">
-            <Link
-              onClick={() => {
-                setRoute("/mainnetdai");
-              }}
-              to="/mainnetdai"
-            >
-              Mainnet DAI
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/subgraph">
-            <Link
-              onClick={() => {
-                setRoute("/subgraph");
-              }}
-              to="/subgraph"
-            >
-              Subgraph
-            </Link>
-          </Menu.Item>
+          })}
         </Menu>
 
         <Switch>

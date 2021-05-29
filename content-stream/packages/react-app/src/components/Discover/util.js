@@ -6,11 +6,11 @@ export const createCard = (title, eth, description, img) => {
 
 const initCards = () => {
   const cards = [];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 9; i++) {
     const card = createCard(
-      faker.commerce.productName(),
-      faker.internet.userName,
-      faker.commerce.productDescription(),
+      `${faker.internet.userName()} stream`,
+      faker.commerce.price(),
+      faker.image.cats(),
       faker.image.image(),
     );
     cards.push(card);
