@@ -9,6 +9,9 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
 import { Account, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch } from "./components";
+import CreateStream from "./components/CreateStream";
+import Discover from "./components/Discover";
+import SellStream from "./components/SellStream";
 import { DAI_ABI, DAI_ADDRESS, INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
@@ -25,6 +28,8 @@ import {
 import { capitalize } from "./util";
 // import Hints from "./Hints";
 import { ExampleUI, Hints, Subgraph } from "./views";
+
+import "./App.css";
 /*
     Welcome to 🏗 scaffold-eth !
 
@@ -288,7 +293,7 @@ function App(props) {
     );
   }
 
-  const ROUTES = ["discover"];
+  const ROUTES = ["discover", "sell", "stream"];
 
   return (
     <div className="App">
@@ -320,7 +325,7 @@ function App(props) {
               </Menu.Item>
             );
           })}
-          <Menu.Item key="/hints">
+          {/* <Menu.Item key="/hints">
             <Link
               onClick={() => {
                 setRoute("/hints");
@@ -349,7 +354,7 @@ function App(props) {
             >
               Mainnet DAI
             </Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item key="/subgraph">
             <Link
               onClick={() => {
@@ -364,17 +369,23 @@ function App(props) {
 
         <Switch>
           <Route exact path="/">
-            <Contract
+            <Discover />
+            {/* <Contract
               name="YourContract"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
               blockExplorer={blockExplorer}
-            />
+            /> */}
           </Route>
           <Route path="/discover">
-            <p>Hello</p>
-            {/* <Discover /> */}
+            <Discover />
+          </Route>
+          <Route path="/sell">
+            <SellStream />
+          </Route>
+          <Route path="/stream">
+            <CreateStream />
           </Route>
           <Route path="/hints">
             <Hints

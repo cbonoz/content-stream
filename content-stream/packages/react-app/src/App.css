@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+.content {
+  margin: 0 auto;
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.ant-layout-header {
+  background: white !important;
+}
+
+.ant-btn,
+.ant-btn-circle {
+  /* padding: 10px 20px 10px 20px !important; */
+  margin: 10px;
+}
+
 .nav-logo {
   height: 25px;
 }

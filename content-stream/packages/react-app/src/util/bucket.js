@@ -8,6 +8,22 @@ export async function authorize(key, identity) {
   return client;
 }
 
+export const getOrCreateBucket = async (key, identity) => {
+  // Use the insecure key to set up the buckets client
+  const buckets = await Buckets.withKeyInfo(key);
+  // Authorize the user and your insecure keys with getToken
+  await buckets.getToken(identity);
+
+  const result = await buckets.open("io.textile.dropzone");
+  if (!result.root) {
+    throw new Error("Failed to open bucket");
+  }
+  return {
+    buckets: buckets,
+    bucketKey: result.root.key,
+  };
+};
+
 export const insertFile = (buckets, bucketKey, file, path) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

@@ -9,10 +9,10 @@ const themes = {
   dark: `${process.env.PUBLIC_URL}/dark-theme.css`,
   light: `${process.env.PUBLIC_URL}/light-theme.css`,
 };
-
 const prevTheme = window.localStorage.getItem("theme");
 
-const subgraphUri = "http://localhost:8000/subgraphs/name/scaffold-eth/your-contract";
+// https://thegraph.com/explorer/subgraph/livepeer/livepeer?selected=playground
+const subgraphUri = "https://api.thegraph.com/subgraphs/name/livepeer/livepeer";
 
 const client = new ApolloClient({
   uri: subgraphUri,
