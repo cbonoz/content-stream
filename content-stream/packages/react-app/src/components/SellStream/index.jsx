@@ -53,8 +53,10 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
       } catch (e) {
         console.error(e);
         alert(e.toString());
+        return;
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
 
     console.log("update step", newStep);
