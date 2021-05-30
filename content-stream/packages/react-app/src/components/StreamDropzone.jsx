@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { bytesToSize } from "./Discover/util";
 
 const thumbsContainer = {
   display: "flex",
@@ -14,8 +15,10 @@ const thumb = {
   border: "1px solid #eaeaea",
   marginBottom: 8,
   marginRight: 8,
-  width: 100,
-  height: 100,
+  width: 200,
+  textAlign: "left",
+  height: 75,
+  overflow: "hidden",
   padding: 4,
   boxSizing: "border-box",
 };
@@ -35,6 +38,7 @@ const img = {
 export function StreamDropzone({ files, setFiles }) {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: acceptedFiles => {
+      console.log("files", acceptedFiles);
       setFiles(
         acceptedFiles.map(file =>
           Object.assign(file, {
@@ -48,8 +52,17 @@ export function StreamDropzone({ files, setFiles }) {
   const thumbs = files.map(file => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
-        {file.preview && <img src={file.preview} style={img} />}
-        {!file.preview && <p>{file.name}</p>}
+        <p>
+          <b>{file.name}</b>
+          <br />
+          {file.size && (
+            <span>
+              Size: {bytesToSize(file.size)}
+              <br />
+            </span>
+          )}
+          {file.type && <span>Type: {file.type}</span>}
+        </p>
       </div>
     </div>
   ));

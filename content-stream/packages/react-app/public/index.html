@@ -5,8 +5,40 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=0.6, maximum-scale=1.0, user-scalable=0" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="A Marketplace for Stream NFTs" />
+    <meta name="description" content="A Marketplace for streaming NFTs" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <script>
+      (function (d, s) {
+        var js = d.createElement(s),
+          sc = d.getElementsByTagName(s)[0];
+        js.src = "https://paywall.unlock-protocol.com/static/unlock.latest.min.js";
+        sc.parentNode.insertBefore(js, sc);
+      })(document, "script");
+
+      var unlockProtocolConfig = {
+        network: 4, // Network ID (1 is for mainnet, 4 for rinkeby... etc)
+        locks: {
+          ["0xcB604f078E85e161A77429BBDBe69F505497e7cB"]: {
+            // 0xabc is the address of a lock.
+            name: "My Twitch Stream 5/27",
+            network: 4, // you can customize the network for each lock
+          },
+          "0xghi": {
+            // if no name is used, the default from the contract is used
+          }, // you can add as many locks as you want.
+        },
+        icon: "https://i.ibb.co/FbQVYRw/contenticon.png", // Hosted App icon.
+        callToAction: {
+          default: "This stream package is available for sale. Pay with cryptocurrency to access it!",
+          expired: "This stream is no longer available for purchase",
+          pending: "Transaction pending...",
+          confirmed: "Stream packet bought",
+          noWallet: "No wallet present"
+        },
+        referrer: "0xreferrer", // Address of the referrer who will earn UDT governance tokens if the transaction is elligible.
+      };
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -36,14 +68,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-    <script>
-      (function (d, s) {
-        var js = d.createElement(s),
-          sc = d.getElementsByTagName(s)[0];
-        js.src = "https://paywall.unlock-protocol.com/static/unlock.latest.min.js";
-        sc.parentNode.insertBefore(js, sc);
-      })(document, "script");
-    </script>
   </body>
 </html>

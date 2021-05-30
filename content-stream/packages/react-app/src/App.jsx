@@ -30,24 +30,9 @@ import { capitalize } from "./util";
 import { ExampleUI, Hints, Subgraph } from "./views";
 
 import "./App.css";
-/*
-    Welcome to 🏗 scaffold-eth !
+import Access from "./components/Access";
 
-    Code:
-    https://github.com/austintgriffith/scaffold-eth
-
-    Support:
-    https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA
-    or DM @austingriffith on twitter or telegram
-
-    You should get your own Infura.io ID and put it in `constants.js`
-    (this is your connection to the main Ethereum network for ENS etc.)
-
-
-    🌏 EXTERNAL CONTRACTS:
-    You can also bring in contract artifacts in `constants.js`
-    (and then use the `useExternalContractLoader()` hook!)
-*/
+const DEFAULT_LOCK = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
 
 /// 📡 What chain are your contracts deployed to?
 const targetNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
@@ -293,7 +278,9 @@ function App(props) {
     );
   }
 
-  const ROUTES = ["discover", "sell", "stream", "subgraph"];
+  const ROUTES = ["discover", "sell", "stream", "access", "broadcasters"];
+
+  const isLoggedIn = !!web3Modal.cachedProvider;
 
   return (
     <div className="App">
@@ -335,6 +322,7 @@ function App(props) {
           </Route>
           <Route path="/sell">
             <SellStream
+              isLoggedIn={isLoggedIn}
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
@@ -348,6 +336,9 @@ function App(props) {
               address={address}
               blockExplorer={blockExplorer}
             />
+          </Route>
+          <Route path={["/access"]}>
+            <Access />
           </Route>
           <Route path="/hints">
             <Hints
@@ -382,7 +373,7 @@ function App(props) {
               blockExplorer="https://etherscan.io/"
             />
           </Route>
-          <Route path="/subgraph">
+          <Route path="/broadcasters">
             <Subgraph
               subgraphUri={props.subgraphUri}
               tx={tx}

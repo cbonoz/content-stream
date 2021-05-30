@@ -13,15 +13,16 @@ const { Step } = Steps;
 
 const LAST_STEP = 3;
 
-function SellStream({ signer, provider, address, blockExplorer }) {
-  const [currentStep, setCurrentStep] = useState(0);
+function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
+  const [currentStep, setCurrentStep] = useState(2);
 
   useEffect(() => {
-    if (address && currentStep === 0) updateStep(1);
-  }, [address]);
+    console.log("isLoggedIn", isLoggedIn);
+    if (isLoggedIn && currentStep === 0) updateStep(1);
+  }, [isLoggedIn]);
 
   const [files, setFiles] = useState([]);
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState({ title: "Golf Broadcast from 5/28", eth: 0.01 });
   const [result, setResult] = useState({});
 
   const clearInfo = () => setInfo({});
@@ -49,7 +50,15 @@ function SellStream({ signer, provider, address, blockExplorer }) {
   const getBody = () => {
     switch (currentStep) {
       case 0: // confirm login
-        return <div>{address}</div>;
+        return (
+          <div>
+            <h2>Login</h2>
+            <p>
+              In order to create a listing, you must login with your metamask or wallet account. Click 'connect' in the
+              top right to begin.
+            </p>
+          </div>
+        );
       case 1: // info
         return (
           <div className="info-section">
@@ -61,12 +70,13 @@ function SellStream({ signer, provider, address, blockExplorer }) {
               onChange={e => updateInfo({ title: e.target.value })}
             />
             <Input
-              addonBefore={"Price"}
-              placeholder="Enter price (ETH)"
+              addonBefore={"Price (eth)"}
+              placeholder="Enter eth price"
               value={info.eth}
               onChange={e => updateInfo({ eth: e.target.value })}
             />
             <Input addonBefore={"Address"} disabled placeholder="Payment Address: " value={address} />
+            <p>Note: In order to sell a stream or stream package, it must be finished and as a recording. This recording will be secured and delivered via a special IPFS link.</p>
           </div>
         );
       case 2: // upload
@@ -79,7 +89,22 @@ function SellStream({ signer, provider, address, blockExplorer }) {
         return (
           <div className="complete-section">
             <h1>Complete!</h1>
-            {JSON.stringify(result)}
+            {Object.keys(result).map(k => {
+              return (
+                <li>
+                  {k}: {JSON.stringify(result[k])}
+                </li>
+              );
+            })}
+            <h3>Listing information</h3>
+            {Object.keys(info).map(k => {
+              return (
+                <li key={k}>
+                  {k}: {JSON.stringify(info[k]).replaceAll('"', "")}
+                </li>
+              );
+            })}
+
             {result.url && (
               <a href={result.url} target="_blank">
                 Click here to view listing.
@@ -105,7 +130,7 @@ function SellStream({ signer, provider, address, blockExplorer }) {
         <div className="sell-area">{getBody()}</div>
       </Content>
       <Footer>
-        {currentStep !== 1 && (
+        {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
           <Button type="primary" onClick={() => updateStep(-1)}>
             Previous
           </Button>
