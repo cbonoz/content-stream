@@ -52,7 +52,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
         addCard(card);
       } catch (e) {
         console.error(e);
-        alert(e.toString());
+        // alert(e.toString());
       }
       setLoading(false);
     }

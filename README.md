@@ -6,6 +6,14 @@
 
 ContentStream is a broadcast platform and marketplace allowing content creators to sell streams as bundles and NFT's.
 
+## Technology
+
+- Web3/metamask integration: Authenticate the current user for submitting and receiving payments for marketplace listings.
+- Livepeer: Session and stream recording generation.
+- IPFS/Textile: Preservation of stream listings/packages in separate buckets. Used as a distribution mechanism for purchased assets.
+- UDT / Unlockjs: Paywalls for asset purchasing. Representation of the stream as a purchase
+- The graph: Reporting and health of ecosystem. Volume indicators for using LivePeer. Indexing of contentstream transactions in the future.
+
 ## Inspiration
 
 NFTs are exploding in popularity but a lot of the current use cases revolve around speculative artwork. Owners of NFTs often purchase them with the hope that the price will increase. Instead of being rooted in speculation, we hope to create NFT that people can connect to as well as have a piece of history from a streamer's career.
@@ -34,13 +42,7 @@ Many NFT marketplaces exist, but:
 
 ContentStream takes a small royalty fee off of transactions.
 
-## How we built it
 
-- Web3/metamask integration: Authenticate the current user for submitting and receiving payments.
-- Livepeer: Session and stream recording generation.
-- IPFS/Textile: Preservation of the stream in Bucket. Used as a distribution mechanism for purchased assets.
-- UDT: Paywalls for asset purchasing. Representation of the stream as a purchase
-- The graph: Reporting and health of ecosystem. Volume indicators for using LivePeer. Indexing of contentstream transactions in the future.
 
 ### Future Work
 

@@ -33,8 +33,6 @@ import "./App.css";
 import Access from "./components/Access";
 import About from "./components/About";
 
-const DEFAULT_LOCK = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
-
 /// 📡 What chain are your contracts deployed to?
 const targetNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 

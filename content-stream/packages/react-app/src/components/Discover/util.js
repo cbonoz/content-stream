@@ -1,6 +1,6 @@
 import faker from "faker";
 
-export const LOCK_ADDRESS = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
+export const LOCK_ADDRESS = "0xf0d9b8844Aa1f1568d451b20CfA88A39C6e38e17";
 
 faker.seed(124);
 
