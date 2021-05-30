@@ -8,7 +8,7 @@ import { Modal, Button } from "antd";
 const { Meta } = Card;
 
 const defaultImage = "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
-function StreamCard({ key, data }) {
+function StreamCard({ data }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const onClick = () => {
@@ -24,7 +24,6 @@ function StreamCard({ key, data }) {
   const handleOk = () => setIsModalVisible(false);
   return (
     <Card
-      key={key}
       style={{ cursor: "pointer", margin: "10px" }}
       className="ant-card"
       cover={<img alt="example" className="card-image" src={data.img || defaultImage} />}
@@ -36,8 +35,8 @@ function StreamCard({ key, data }) {
     >
       <Meta
         avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-        title={data.title}
-        description={"Purchase or preview this stream."}
+        title={data.userName}
+        description={`${data.title}. Purchase or preview this stream.`}
       />
       <Modal title={data.title} visible={isModalVisible} onOk={handleOk}>
         <h4>{data.userName}</h4>

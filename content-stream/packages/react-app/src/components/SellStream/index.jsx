@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Steps } from "antd";
 
-import { Layout } from "antd";
-import { Button, Radio } from "antd";
 import { StreamDropzone } from "../StreamDropzone";
-import { Input } from "antd";
+import { Input, Button, Steps, Layout } from "antd";
 import { createBucketWithFiles } from "../../util/bucket";
 import { addCard } from "../Discover/util";
 
@@ -23,8 +20,9 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
   }, [isLoggedIn]);
 
   const [files, setFiles] = useState([]);
-  const [info, setInfo] = useState({ userName: "CB", title: "Golf Broadcast from 5/28", eth: 0.01 });
+  const [info, setInfo] = useState({ userName: "cbono", title: "LiveStream Broadcast from 5/29", eth: 0.01 });
   const [result, setResult] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const clearInfo = () => setInfo({});
 
@@ -39,14 +37,24 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
         alert("At least one file must be added");
         return;
       }
+      setLoading(true);
 
-      const res = await createBucketWithFiles(info.title, files);
-      setResult(res);
+      try {
+        const res = await createBucketWithFiles(info.title, files);
+        setResult(res);
 
-      const card = {
-        ...info,
-      };
-      addCard(card);
+        const card = {
+          ...info,
+          createdAt: new Date(),
+          key: res.bucketKey,
+        };
+
+        addCard(card);
+      } catch (e) {
+        console.error(e);
+        alert(e.toString());
+      }
+      setLoading(false);
     }
 
     console.log("update step", newStep);
@@ -76,7 +84,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
               onChange={e => updateInfo({ title: e.target.value })}
             />
             <Input
-              addonBefore={"UserName"}
+              addonBefore={"DisplayName"}
               placeholder="Enter listing user name"
               value={info.userName}
               onChange={e => updateInfo({ userName: e.target.value })}
@@ -89,6 +97,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
             />
             <Input
               addonBefore={"Image"}
+              addonAfter={"A default will be used if blank"}
               placeholder="Enter listing image or thumbnail url (optional)"
               value={info.imgUrl}
               onChange={e => updateInfo({ imgUrl: e.target.value })}
@@ -153,12 +162,12 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
       </Content>
       <Footer>
         {(currentStep !== 0 || (currentStep !== 1 && !isLoggedIn)) && (
-          <Button type="primary" onClick={() => updateStep(-1)}>
+          <Button disabled={loading} type="primary" onClick={() => updateStep(-1)}>
             Previous
           </Button>
         )}
         {currentStep < LAST_STEP && (
-          <Button type="primary" onClick={() => updateStep(1)}>
+          <Button disabled={loading} loading={loading} type="primary" onClick={() => updateStep(1)}>
             {currentStep === LAST_STEP - 1 ? "Done" : "Next"}
           </Button>
         )}

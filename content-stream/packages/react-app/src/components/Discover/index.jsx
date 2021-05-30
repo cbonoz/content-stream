@@ -29,7 +29,7 @@ function Discover(props) {
   useEffect(() => {
     window.addEventListener("unlockProtocol.transactionSent", function (event) {
       // event.detail.hash includes the hash of the transaction sent
-      setIsModalVisible(false);
+      setIsModalVisible(true);
       setPurchasedItem(window.unlockProtocolConfig.last);
     });
   }, []);
@@ -45,7 +45,11 @@ function Discover(props) {
       />
       <br />
       {cards.map((x, i) => {
-        return <StreamCard key={i} data={x} />;
+        return (
+          <span key={i}>
+            <StreamCard data={x} />;
+          </span>
+        );
       })}
       <Modal title="Success" visible={isModalVisible} onOk={() => setIsModalVisible(false)}>
         <h5>Purchased item: </h5>

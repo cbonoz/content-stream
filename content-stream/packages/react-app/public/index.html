@@ -19,14 +19,11 @@
       var unlockProtocolConfig = {
         network: 4, // Network ID (1 is for mainnet, 4 for rinkeby... etc)
         locks: {
-          ["0xcB604f078E85e161A77429BBDBe69F505497e7cB"]: {
+          "0xcB604f078E85e161A77429BBDBe69F505497e7cB": {
             // 0xabc is the address of a lock.
             name: "My Twitch Stream 5/27",
             network: 4, // you can customize the network for each lock
           },
-          "0xghi": {
-            // if no name is used, the default from the contract is used
-          }, // you can add as many locks as you want.
         },
         icon: "https://i.ibb.co/FbQVYRw/contenticon.png", // Hosted App icon.
         callToAction: {
@@ -34,12 +31,13 @@
           expired: "This stream is no longer available for purchase",
           pending: "Transaction pending...",
           confirmed: "Stream packet bought",
-          noWallet: "No wallet present"
+          noWallet: "No wallet present",
         },
-        referrer: "0xreferrer", // Address of the referrer who will earn UDT governance tokens if the transaction is elligible.
+        referrer: "0xD7e02fB8A60E78071D69ded9Eb1b89E372EE2292", // Address of the referrer who will earn UDT governance tokens if the transaction is elligible.
       };
     </script>
     <!--
+icon: "", // hosted icon
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->

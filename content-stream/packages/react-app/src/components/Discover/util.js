@@ -4,14 +4,14 @@ export const LOCK_ADDRESS = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
 
 faker.seed(124);
 
-export const createCard = (userName, title, eth, img, createdAt) => {
+export const createCard = (userName, title, eth, img, createdAt, key) => {
   return {
     userName,
     title,
     eth,
     img,
     createdAt,
-    key: "bafzbeiafmqf335n3xigktpd6cvkno3md7353hc5zhtpu2censhivu6udxq",
+    key: key || "bafzbeiafmqf335n3xigktpd6cvkno3md7353hc5zhtpu2censhivu6udxq",
   };
 };
 
@@ -27,13 +27,8 @@ const initCards = () => {
   for (let i = 0; i < 5; i++) {
     const d = faker.date.recent();
     const user = faker.internet.userName();
-    const card = createCard(
-      user,
-      `${user} ${d.toLocaleDateString()} stream`,
-      faker.commerce.price(),
-      faker.image.city(),
-      d,
-    );
+    const img = `${faker.image.sports()}?random=${Math.round(Math.random() * 1000)}`;
+    const card = createCard(user, `${user} ${d.toLocaleDateString()} stream`, "0.01", img, d);
     cards.push(card);
   }
   console.log(cards);
