@@ -31,6 +31,13 @@ function CreateStream(props) {
       <Button loading={loading} onClick={create}>
         Start new stream
       </Button>
+
+      {data && data.playbackId && (
+        <span>
+          <h3>Playback ID: {data.playbackId}</h3>
+          <p>Use url: https://region-cdn.livepeer.com/hls/{data.playbackId}/index.m3u8</p>
+        </span>
+      )}
       <div className="align-left">
         {data &&
           Object.keys(data).map(k => {

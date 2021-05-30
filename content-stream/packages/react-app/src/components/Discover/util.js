@@ -24,7 +24,7 @@ export const bytesToSize = bytes => {
 
 const initCards = () => {
   const cards = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     const d = faker.date.recent();
     const user = faker.internet.userName();
     const img = `${faker.image.sports()}?random=${Math.round(Math.random() * 1000)}`;
