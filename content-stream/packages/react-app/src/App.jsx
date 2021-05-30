@@ -31,6 +31,7 @@ import { ExampleUI, Hints, Subgraph } from "./views";
 
 import "./App.css";
 import Access from "./components/Access";
+import About from "./components/About";
 
 const DEFAULT_LOCK = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
 
@@ -308,7 +309,7 @@ function App(props) {
 
         <Switch>
           <Route exact path="/">
-            <Discover />
+            <About />
             {/* <Contract
               name="YourContract"
               signer={userProvider.getSigner()}

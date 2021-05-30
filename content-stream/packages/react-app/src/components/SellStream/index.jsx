@@ -15,7 +15,7 @@ const { Step } = Steps;
 const LAST_STEP = 3;
 
 function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
     console.log("isLoggedIn", isLoggedIn);
@@ -58,7 +58,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
       case 0: // confirm login
         return (
           <div>
-            <h2>Login</h2>
+            <h2 className="sell-header">Login</h2>
             <p>
               In order to create a listing, you must login with your metamask or wallet account. Click 'connect' in the
               top right to begin.
@@ -68,7 +68,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
       case 1: // info
         return (
           <div className="info-section">
-            <h2>What are you listing?</h2>
+            <h2 className="sell-header">What are you listing?</h2>
             <Input
               addonBefore={"Stream(s)"}
               placeholder="Enter name of listing"
@@ -87,6 +87,12 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
               value={info.eth}
               onChange={e => updateInfo({ eth: e.target.value })}
             />
+            <Input
+              addonBefore={"Image"}
+              placeholder="Enter listing image or thumbnail url (optional)"
+              value={info.imgUrl}
+              onChange={e => updateInfo({ imgUrl: e.target.value })}
+            />
             <Input addonBefore={"Address"} disabled placeholder="Payment Address: " value={address} />
             <p>
               Note: In order to sell a stream or stream package, it must be finished and as a recording. This recording
@@ -103,11 +109,12 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
       case 3: // done
         return (
           <div className="complete-section">
-            <h1>Complete!</h1>
+            <h2 className="sell-header">Complete!</h2>
+
             {Object.keys(result).map(k => {
               return (
                 <li>
-                  {k}: {JSON.stringify(result[k])}
+                  {k}: {JSON.stringify(result[k]).replaceAll('"', "")}
                 </li>
               );
             })}

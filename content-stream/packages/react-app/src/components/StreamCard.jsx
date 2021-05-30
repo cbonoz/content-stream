@@ -15,6 +15,7 @@ function StreamCard({ key, data }) {
     console.log("unlock", window.unlockProtocol);
     window.unlockProtocolConfig.callToAction.default = `This stream package ${data.title} is available for 0.01 Eth. Pay with cryptocurrency to add it to your wallet and access it!`;
     window.unlockProtocolConfig.locks[LOCK_ADDRESS].name = data.title;
+    window.unlockProtocolConfig["last"] = data;
     window.unlockProtocol && window.unlockProtocol.loadCheckoutModal(/* optional configuration*/);
   };
   const viewInfo = () => {
@@ -23,6 +24,7 @@ function StreamCard({ key, data }) {
   const handleOk = () => setIsModalVisible(false);
   return (
     <Card
+      key={key}
       style={{ cursor: "pointer", margin: "10px" }}
       className="ant-card"
       cover={<img alt="example" className="card-image" src={data.img || defaultImage} />}

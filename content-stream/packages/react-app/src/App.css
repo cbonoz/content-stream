@@ -14,11 +14,27 @@
   min-height: 60vh;
 }
 
-.align-left {
-  text-align: left;;
+.sell-header {
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
-.card-image, .ant-card {
+.hero-logo {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.header-steps {
+  height: 300px;
+  padding-top: 100px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.card-image,
+.ant-card {
   width: 300px !important;
 }
 

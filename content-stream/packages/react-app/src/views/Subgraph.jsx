@@ -71,6 +71,8 @@ function Subgraph(props) {
   return (
     <>
       <div className="content">
+        <h2 className="sell-header">ContentStream Ecosystem</h2>
+
         <p>This page shows a live list of transcoders on the ContentStream / LivePeer network.</p>
         <p>
           Stats powered by{" "}
@@ -81,10 +83,10 @@ function Subgraph(props) {
         </p>
         {data ? (
           <div>
-            <h5>Broadcasters</h5>
+            <h3>Broadcasters</h3>
             <p>List of the largest available broadcasters by deposit.</p>
             <Table dataSource={broadcasterData} columns={BROADCASTER_COLS} rowKey="id" />
-            <h5>Transcoders</h5>
+            <h3>Transcoders</h3>
             <p>List of the largest available transcoders by volume.</p>
             <Table dataSource={transcoderData} columns={TRANSCODER_COLS} rowKey="id" />
           </div>
