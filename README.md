@@ -1,5 +1,5 @@
 <p align='center'>
-<img src='./img/contentstream_full.png' width=500/>
+<img src='./img/contentstream_full.png' width=600/>
 </p>
 
 ## ContentStream
@@ -8,7 +8,7 @@ ContentStream is a broadcast platform and marketplace allowing content creators 
 
 ## Inspiration
 
-NFTs are exploding in popularity but a lot of the current use cases revolve around speculative artwork. Owners of NFTs often purchase them with the hope that the price will increase. Instead of being rooted in speculation, we hope to create NFT that people can connect to, that have practical use cases and that are just plain fun!
+NFTs are exploding in popularity but a lot of the current use cases revolve around speculative artwork. Owners of NFTs often purchase them with the hope that the price will increase. Instead of being rooted in speculation, we hope to create NFT that people can connect to as well as have a piece of history from a streamer's career.
 
 With the rise in popularity of these sorts of marketplaces, video content is starting to discover a market as well.
 
@@ -58,17 +58,17 @@ Define `REACT_APP_LIVEPEER_KEY=YYY` in your environment
 ### Screenshots
 
 <p>Discover page</p>
-<img src="./img/stream.png" width=500 />
+<img src="./img/stream.png" width=600 />
 <p>Upload and sell stream bundles</p>
-<img src="./img/sell.png" width=500 />
+<img src="./img/sell.png" width=600 />
 <p>Purchase using unlock</p>
-<img src="./img/purchase.png" width=500 />
+<img src="./img/purchase.png" width=600 />
 <p>Access purchased ipfs bundles/streams</p>
-<img src="./img/access.png" width=500 />
+<img src="./img/access.png" width=600 />
 <p>Download</p>
-<img src="./img/contents.png" width=500 />
+<img src="./img/contents.png" width=600 />
 <p>The graph index of Livepeer/streaming health</p>
-<img src="./img/graph.png" width=500 />
+<img src="./img/graph.png" width=600 />
 
 ### Useful links
 
