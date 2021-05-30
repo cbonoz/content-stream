@@ -7,7 +7,7 @@ const formatRecord = (key, record) => {
   if (key === "date") {
     return new Date(record).getLocaleDateString();
   }
-  return isNaN(record) || record > 10000000 ? record : Math.round(record);
+  return isNaN(record) || record > 10000000 ? record : Math.round(record * 100) / 100;
 };
 
 export const makeColumn = key => {

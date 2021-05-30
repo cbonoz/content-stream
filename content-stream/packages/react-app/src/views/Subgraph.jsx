@@ -30,7 +30,11 @@ const NUM_RESULTS = 20;
       */
 const EXAMPLE_GRAPHQL = `
 {
-
+  broadcasters(orderBy: deposit, orderDirection: desc, first: ${NUM_RESULTS}) {
+    id
+    deposit
+    reserve
+  }
   transcoders(orderBy: totalVolumeUSD, orderDirection: desc, where: {active: true}, first: ${NUM_RESULTS}) {
     id
     status
@@ -40,7 +44,8 @@ const EXAMPLE_GRAPHQL = `
     serviceURI
   }
 }`;
-const COLS = ["id", "active", "status", "totalStake", "totalVolumeUSD", "serviceURI"].map(makeColumn);
+const TRANSCODER_COLS = ["id", "active", "status", "totalStake", "totalVolumeUSD", "serviceURI"].map(makeColumn);
+const BROADCASTER_COLS = ["id", "deposit", "reserve"].map(makeColumn);
 
 function Subgraph(props) {
   function graphQLFetcher(graphQLParams) {
@@ -61,6 +66,7 @@ function Subgraph(props) {
   console.log("data", data);
 
   const transcoderData = data ? data.transcoders : [];
+  const broadcasterData = data ? data.broadcasters : [];
 
   return (
     <>
@@ -75,7 +81,12 @@ function Subgraph(props) {
         </p>
         {data ? (
           <div>
-            <Table dataSource={transcoderData} columns={COLS} rowKey="id" />
+            <h5>Broadcasters</h5>
+            <p>List of the largest available broadcasters by deposit.</p>
+            <Table dataSource={broadcasterData} columns={BROADCASTER_COLS} rowKey="id" />
+            <h5>Transcoders</h5>
+            <p>List of the largest available transcoders by volume.</p>
+            <Table dataSource={transcoderData} columns={TRANSCODER_COLS} rowKey="id" />
           </div>
         ) : (
           <Typography>{loading ? "Loading..." : deployWarning}</Typography>
