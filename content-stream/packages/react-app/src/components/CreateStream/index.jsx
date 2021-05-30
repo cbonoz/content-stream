@@ -31,16 +31,18 @@ function CreateStream(props) {
       <Button loading={loading} onClick={create}>
         Start new stream
       </Button>
-      {data &&
-        Object.keys(data).map(k => {
-          return (
-            <li key={k}>
-              {k}: {JSON.stringify(data[k]).replaceAll('"', "")}
-            </li>
-          );
-        })}
-
+      <div className="align-left">
+        {data &&
+          Object.keys(data).map(k => {
+            return (
+              <li key={k}>
+                {k}: {JSON.stringify(data[k]).replaceAll('"', "")}
+              </li>
+            );
+          })}
+      </div>
       <p>
+        <hr />
         Use this created stream information to plug into your favorite streaming system such as{" "}
         <a href="https://obsproject.com/" target="_blank">
           OBS

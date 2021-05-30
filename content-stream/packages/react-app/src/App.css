@@ -14,8 +14,12 @@
   min-height: 60vh;
 }
 
-.card-image {
-  width: 300px;
+.align-left {
+  text-align: left;;
+}
+
+.card-image, .ant-card {
+  width: 300px !important;
 }
 
 .ant-card {

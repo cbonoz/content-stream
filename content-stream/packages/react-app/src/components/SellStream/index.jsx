@@ -6,6 +6,7 @@ import { Button, Radio } from "antd";
 import { StreamDropzone } from "../StreamDropzone";
 import { Input } from "antd";
 import { createBucketWithFiles } from "../../util/bucket";
+import { addCard } from "../Discover/util";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,7 +23,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
   }, [isLoggedIn]);
 
   const [files, setFiles] = useState([]);
-  const [info, setInfo] = useState({ title: "Golf Broadcast from 5/28", eth: 0.01 });
+  const [info, setInfo] = useState({ userName: "CB", title: "Golf Broadcast from 5/28", eth: 0.01 });
   const [result, setResult] = useState({});
 
   const clearInfo = () => setInfo({});
@@ -41,6 +42,11 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
 
       const res = await createBucketWithFiles(info.title, files);
       setResult(res);
+
+      const card = {
+        ...info,
+      };
+      addCard(card);
     }
 
     console.log("update step", newStep);
@@ -70,13 +76,22 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
               onChange={e => updateInfo({ title: e.target.value })}
             />
             <Input
+              addonBefore={"UserName"}
+              placeholder="Enter listing user name"
+              value={info.userName}
+              onChange={e => updateInfo({ userName: e.target.value })}
+            />
+            <Input
               addonBefore={"Price (eth)"}
               placeholder="Enter eth price"
               value={info.eth}
               onChange={e => updateInfo({ eth: e.target.value })}
             />
             <Input addonBefore={"Address"} disabled placeholder="Payment Address: " value={address} />
-            <p>Note: In order to sell a stream or stream package, it must be finished and as a recording. This recording will be secured and delivered via a special IPFS link.</p>
+            <p>
+              Note: In order to sell a stream or stream package, it must be finished and as a recording. This recording
+              will be secured and delivered via a special IPFS link.
+            </p>
           </div>
         );
       case 2: // upload

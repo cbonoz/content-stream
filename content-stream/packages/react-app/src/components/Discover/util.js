@@ -2,8 +2,17 @@ import faker from "faker";
 
 export const LOCK_ADDRESS = "0xcB604f078E85e161A77429BBDBe69F505497e7cB";
 
-export const createCard = (userName, title, eth, description, img, createdAt) => {
-  return { userName, title, eth, description, img, createdAt };
+faker.seed(124);
+
+export const createCard = (userName, title, eth, img, createdAt) => {
+  return {
+    userName,
+    title,
+    eth,
+    img,
+    createdAt,
+    key: "bafzbeiafmqf335n3xigktpd6cvkno3md7353hc5zhtpu2censhivu6udxq",
+  };
 };
 
 export const bytesToSize = bytes => {
@@ -15,15 +24,14 @@ export const bytesToSize = bytes => {
 
 const initCards = () => {
   const cards = [];
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 5; i++) {
     const d = faker.date.recent();
     const user = faker.internet.userName();
     const card = createCard(
       user,
       `${user} ${d.toLocaleDateString()} stream`,
       faker.commerce.price(),
-      faker.image.cats(),
-      faker.image.image(),
+      faker.image.city(),
       d,
     );
     cards.push(card);
@@ -33,3 +41,5 @@ const initCards = () => {
 };
 
 export const EXAMPLE_CARDS = initCards();
+
+export const addCard = c => EXAMPLE_CARDS.push(c);

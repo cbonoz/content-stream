@@ -23,7 +23,8 @@ function StreamCard({ key, data }) {
   const handleOk = () => setIsModalVisible(false);
   return (
     <Card
-      style={{ width: 300, cursor: "pointer", margin: "10px" }}
+      style={{ cursor: "pointer", margin: "10px" }}
+      className="ant-card"
       cover={<img alt="example" className="card-image" src={data.img || defaultImage} />}
       actions={[
         <DollarOutlined key="purchase" onClick={onClick} />,
