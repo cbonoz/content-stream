@@ -1,5 +1,5 @@
 <p align='center'>
-<img src='./img/contentstream_full.png' width=600/>
+<img src='./img/contentstream_full.png' width=800/>
 </p>
 
 ## ContentStream
@@ -60,17 +60,17 @@ Define `REACT_APP_LIVEPEER_KEY=YYY` in your environment
 ### Screenshots
 
 <p>Discover page</p>
-<img src="./img/stream.png" width=600 />
+<img src="./img/stream.png" width=800 />
 <p>Upload and sell stream bundles</p>
-<img src="./img/sell.png" width=600 />
+<img src="./img/sell.png" width=800 />
 <p>Purchase using unlock</p>
-<img src="./img/purchase.png" width=600 />
+<img src="./img/purchase.png" width=800 />
 <p>Access purchased ipfs bundles/streams</p>
-<img src="./img/access.png" width=600 />
+<img src="./img/access.png" width=800 />
 <p>Download</p>
-<img src="./img/contents.png" width=600 />
+<img src="./img/contents.png" width=800 />
 <p>The graph index of Livepeer/streaming health</p>
-<img src="./img/graph.png" width=600 />
+<img src="./img/graph.png" width=800 />
 
 ### Useful links
 

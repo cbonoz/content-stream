@@ -51,7 +51,7 @@ function SellStream({ isLoggedIn, signer, provider, address, blockExplorer }) {
 
         addCard(card);
       } catch (e) {
-        console.error(e);
+        console.error("error creating listing", e);
         alert(e.toString());
         return;
       } finally {
